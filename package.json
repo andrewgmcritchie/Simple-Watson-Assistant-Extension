@@ -1,0 +1,19 @@
+{
+  "name": "simple-watson-assistant-extension",
+  "version": "1.0.0",
+  "description": "Simple API for WA extension",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.ibm.com/AndrewMcRitchie/Simple-Watson-Assistant-Extension.git"
+  },
+  "author": "Andrew McRitchie",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
