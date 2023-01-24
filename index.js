@@ -7,8 +7,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/users', (req, res) => {
-    console.log(req.body);
-    if (req.body.account === 1111) {
+    console.log(req.body.account);
+    if (req.body.account === '1111') {
         res.json({message: '$12,000', found: 'yes'})
     }
     if (req.body.account === 2222) {
