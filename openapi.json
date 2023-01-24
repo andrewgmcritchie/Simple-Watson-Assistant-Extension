@@ -6,12 +6,12 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000"
+            "url": "https://application-03.y2cdzh8ourd.us-south.codeengine.appdomain.cloud"
         }
     ],
     "paths": {
         "/api/users": {
-            "get": {
+            "post": {
                 "summary": "Retrieve a list of users",
                 "responses": {
                     "200": {
@@ -38,5 +38,3 @@
         }
     }
 }
-
-

@@ -1,8 +1,17 @@
 const express = require('express')
+const bodyParser = require('body-parser');
 const app = express()
 
-app.get('/api/users', (req, res) => {
-  res.json([{ name: 'John Doe' }, { name: 'Jane Doe' }])
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/api/users', (req, res) => {
+    console.log(req.body);
+    if (req.body.name === "John") {
+        res.json([{ name: 'John Doe' }])
+    }
+    res.json([{ name: 'Jane Doe' }])
 })
 
 app.listen(3000, () => {
