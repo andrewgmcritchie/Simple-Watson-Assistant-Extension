@@ -1,32 +1,56 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "User API",
+        "title": "API for users",
         "version": "1.0.0"
     },
-    "servers": [
-        {
-            "url": "https://application-03.y2cdzh8ourd.us-south.codeengine.appdomain.cloud"
-        }
-    ],
+    "servers": [{
+        "url": "https://application-2.y2cdzh8ourd.us-south.codeengine.appdomain.cloud"
+    }],
     "paths": {
         "/api/users": {
-            "post": {
-                "summary": "Retrieve a list of users",
+            "get": {
+                "description": "Returns the account balance for a given account number",
+                "parameters": [{
+                    "name": "account",
+                    "in": "query",
+                    "required": true,
+                    "description": "The account number",
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
                 "responses": {
                     "200": {
-                        "description": "A list of users",
+                        "description": "Account balance found",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "name": {
-                                                "type": "string",
-                                                "example": "John Doe"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "found": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Account not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "found": {
+                                            "type": "string"
                                         }
                                     }
                                 }
