@@ -9,7 +9,7 @@
     }],
     "paths": {
         "/api/users": {
-            "post": {
+            "get": {
                 "description": "Returns the account balance for a given account number",
                 "parameters": [{
                     "name": "account",
