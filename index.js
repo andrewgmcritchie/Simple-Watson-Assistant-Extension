@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/users', (req, res) => {
+app.post('/api/users', (req, res) => {
     console.log(req.body.account);
     if (req.body.account === '1111') {
         res.json({message: '$12,000', found: 'yes'})
