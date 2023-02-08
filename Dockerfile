@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the package.json and package-lock.json files
 COPY package*.json ./
 
+# Set the DEBIAN_FRONTEND to noninteractive
+ENV DEBIAN_FRONTEND noninteractive
+
 # Install Node.js and npm
 RUN apt-get update && apt-get install -y nodejs npm
 
