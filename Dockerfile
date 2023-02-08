@@ -3,6 +3,8 @@ FROM node:14 as builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+RUN apt-get update && apt-get install -y libcrypt1
+
 
 # Final stage
 FROM node:alpine
