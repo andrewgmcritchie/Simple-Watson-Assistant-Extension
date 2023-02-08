@@ -1,15 +1,23 @@
-# Build stage
-FROM node:14 as builder
+# Use Ubuntu 20.04 base image
+FROM ubuntu:20.04
+
+# Set the working directory
 WORKDIR /app
+
+# Copy the package.json and package-lock.json files
 COPY package*.json ./
+
+# Install Node.js and npm
+RUN apt-get update && apt-get install -y nodejs npm
+
+# Install the dependencies from the package.json file
 RUN npm install
-RUN apt-get update && apt-get install -y libcrypt1
 
-
-# Final stage
-FROM node:alpine
-WORKDIR /app
-COPY --from=builder /app/node_modules ./node_modules
+# Copy the rest of the application files
 COPY . .
-CMD ["npm", "start"]
 
+# Expose port 3000 for incoming connections
+EXPOSE 3000
+
+# Start the application
+CMD ["npm", "start"]
