@@ -4,7 +4,7 @@ function getAccountInfo(id) {
     var ibmdb = require("ibm_db");
     const dbname = process.env.DBNAME;
     const hostname = process.env.HOSTNAME;
-    const port = process.env.PORT;
+    const port = 32459;
     const protocol = process.env.PROTOCOL;
     const uid = process.env.UID;
     const password = process.env.PASSWORD;
