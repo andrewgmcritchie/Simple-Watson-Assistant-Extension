@@ -5,17 +5,14 @@ const getAccountBalance = require('./accountFunctions/getAccountBalance')
 const getAccountInfo = require('./accountFunctions/getAccountInfo')
 const accountFound = require('./accountFunctions/accountFound')
 const payBill = require('./accountFunctions/payBill')
-// one to check account balance
-// one to pay a bill
-// one to apply for credit card.
 
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/api/checkbalance', (req, res) => {  
-  if (accountFound(req.query.id)) {
-    let accountInfo = getAccountInfo(req.query.id)
+  if (accountFound(Number(req.query.id))) {
+    let accountInfo = getAccountInfo(Number(req.query.id))
     let balance = getAccountBalance(accountInfo)
     res.json({message: balance})
   }
@@ -25,16 +22,12 @@ app.get('/api/checkbalance', (req, res) => {
 })
 
 app.post('/api/paybill', (req, res) => {
-  if (accountFound(req.query.id)) {
-    res.json(payBill(req.query.id, req.query.amount))
+  if (accountFound(Number(req.query.id))) {
+    res.json(payBill(Number(req.query.id), Number(req.query.amount)))
   }
   else {
     res.json({message: `There is no account associated with the account id: ${req.query.id}`})
   }
-})
-
-app.post('/api/apply', (req, res) => {
-
 })
 
 
