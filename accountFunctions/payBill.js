@@ -33,7 +33,7 @@ function payBill(id, ammountPaying) {
         }
         else {
             return {
-                message: 'You have insufficient funds to make this payment',
+                message: 'There is insufficient funds to make this payment',
                 balance: currentBalance
             }
         }
