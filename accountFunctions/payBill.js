@@ -22,7 +22,7 @@ function payBill(id, ammountPaying) {
         queryString = `SELECT * FROM THY13793.BANKCUSTOMERS WHERE ID='${id}'`;
         var response = connection.querySync(queryString);
         var currentBalance = response[0].BALANCE
-        if (hasFunds(currentBalance, ammountPaying)) {
+        if (hasFunds(Number(currentBalance), Number(ammountPaying))) {
             var newBalance = currentBalance - ammountPaying;
             queryString = `UPDATE BANKCUSTOMERS SET BALANCE = ${newBalance} WHERE ID=${id}`
             var updateResponse = connection.querySync(queryString)
