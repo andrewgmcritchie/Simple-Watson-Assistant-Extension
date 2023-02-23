@@ -8,7 +8,7 @@ function hasFunds(currentBalance, amountPaying) {
         return false
     }
 }
-function payBill(id, ammountPaying) {
+function payBill(id, amountPaying) {
     var ibmdb = require("ibm_db");
     const dbname = process.env.DBNAME;
     const hostname = process.env.HOSTNAME;
@@ -23,8 +23,8 @@ function payBill(id, ammountPaying) {
         var response = connection.querySync(queryString);
         var currentBalance = response[0].BALANCE
         var current = Number(currentBalance)
-        if (hasFunds(current, Number(ammountPaying))) {
-            var newBalance = currentBalance - ammountPaying;
+        if (hasFunds(current, Number(amountPaying))) {
+            var newBalance = currentBalance - amountPaying;
             queryString = `UPDATE BANKCUSTOMERS SET BALANCE = ${newBalance} WHERE ID=${id}`
             var updateResponse = connection.querySync(queryString)
             return {
@@ -34,7 +34,7 @@ function payBill(id, ammountPaying) {
         }
         else {
             return {
-                message: "You have insucffficent funds",
+                message: "You have insufficent funds",
                 balance: currentBalance
             }
         }
