@@ -34,7 +34,7 @@ function payBill(id, ammountPaying) {
         else {
             return {
                 message: 'There is insufficient funds to make this payment',
-                balance: currentBalance
+                balance: typeof ammountPaying
             }
         }
     
