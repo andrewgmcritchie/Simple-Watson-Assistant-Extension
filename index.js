@@ -23,7 +23,7 @@ app.get('/api/checkbalance', (req, res) => {
 
 app.post('/api/paybill', (req, res) => {
   if (accountFound(Number(req.query.id))) {
-    res.json(payBill(Number(req.query.id), typeof Number(req.query.amount)))
+    res.json(payBill(Number(req.query.id), Number(req.query.amount)))
   }
   else {
     res.json({message: `There is no account associated with the account id: ${req.query.id}`})
