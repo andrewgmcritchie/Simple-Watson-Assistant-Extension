@@ -1,7 +1,7 @@
 
 
 function hasFunds(currentBalance, amountPaying) {
-    if (currentBalance >= amountPaying) {
+    if (Number(currentBalance) >= Number(amountPaying)) {
         return true
     }
     else {
@@ -34,8 +34,8 @@ function payBill(id, ammountPaying) {
         }
         else {
             return {
-                message: typeof Number(currentBalance),
-                balance: typeof currentBalance
+                message: "You have insucffficent funds",
+                balance: currentBalance
             }
         }
     
