@@ -22,7 +22,8 @@ function payBill(id, ammountPaying) {
         queryString = `SELECT * FROM THY13793.BANKCUSTOMERS WHERE ID='${id}'`;
         var response = connection.querySync(queryString);
         var currentBalance = response[0].BALANCE
-        if (hasFunds(Number(currentBalance), Number(ammountPaying))) {
+        var current = Number(currentBalance)
+        if (hasFunds(current, Number(ammountPaying))) {
             var newBalance = currentBalance - ammountPaying;
             queryString = `UPDATE BANKCUSTOMERS SET BALANCE = ${newBalance} WHERE ID=${id}`
             var updateResponse = connection.querySync(queryString)
@@ -33,8 +34,8 @@ function payBill(id, ammountPaying) {
         }
         else {
             return {
-                message: 'There is insufficient funds to make this payment',
-                balance: typeof ammountPaying
+                message: typeof Number(currentBalance),
+                balance: typeof currentBalance
             }
         }
     
